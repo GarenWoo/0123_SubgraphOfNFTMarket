@@ -1,0 +1,37 @@
+type NFTBought @entity(immutable: true) {
+  id: Bytes!
+  NFTAddr: Bytes! # address
+  tokenId: BigInt! # uint256
+  bidValue: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTDelisted @entity(immutable: true) {
+  id: Bytes!
+  NFTAddr: Bytes! # address
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTListed @entity(immutable: true) {
+  id: Bytes!
+  NFTAddr: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawBalance @entity(immutable: true) {
+  id: Bytes!
+  withdrawer: Bytes! # address
+  withdrawnValue: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTMarket
+    network: sepolia
+    source:
+      address: "0x15f5748131bF26caa4eF66978743e15A473C1475"
+      abi: NFTMarket
+      startBlock: 5139482
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTBought
+        - NFTDelisted
+        - NFTListed
+        - WithdrawBalance
+      abis:
+        - name: NFTMarket
+          file: NFTMarket/abis/NFTMarket.json
+      eventHandlers:
+        - event: NFTBought(address,uint256,uint256)
+          handler: handleNFTBought
+        - event: NFTDelisted(address,uint256)
+          handler: handleNFTDelisted
+        - event: NFTListed(address,uint256,uint256)
+          handler: handleNFTListed
+        - event: WithdrawBalance(address,uint256)
+          handler: handleWithdrawBalance
+      file: NFTMarket/NFTMarket.wasm
